@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnodose - Check Your Symptoms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #2d3436;
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0984e3, #74b9ff);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .symptom-checker {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .symptom-input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .symptom-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .symptom-tag {
+            background: #0984e3;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .remove-tag {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .analyze-btn {
+            background: #0984e3;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .analyze-btn:hover {
+            background: #074e83;
+        }
+
+        .fixed-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #0984e3;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #0984e3;
+        }
+
+        .language-selector {
+            padding: 0.5rem;
+            border: 1px solid #dfe6e9;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .profile-btn {
+            background: #0984e3;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-btn:hover {
+            background: #074e83;
+        }
+    </style>
+</head>
+<body>
+    <header class="fixed-menu">
+        <div class="logo">
+            <img src="diagonodose-logo.png" alt="Diagnodose Logo">
+            <h1>Diagnodose</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="symptoms.html" class="nav-item">Check Your Symptoms</a>
+            <a href="find-doctor.html" class="nav-item">Find a Doctor</a>
+            <a href="faqs.html" class="nav-item">Help & FAQs</a>
+            <select class="language-selector">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="te">తెలుగు</option>
+                <option value="ta">தமிழ்</option>
+                <option value="kn">ಕನ್ನಡ</option>
+            </select>
+            <a href="health-records.html" class="profile-btn">My Health Records</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="header">
+            <h1>Check Your Symptoms</h1>
+            <p>Get instant insights about your health concerns</p>
+        </section>
+
+        <section class="symptom-checker">
+            <input type="text" class="symptom-input" placeholder="Enter your symptoms (e.g., headache, fever, cough)">
+            
+            <div class="symptom-tags">
+                <!-- Example tags - These would be dynamically added via JavaScript -->
+                <div class="symptom-tag">
+                    Headache <span class="remove-tag">×</span>
+                </div>
+                <div class="symptom-tag">
+                    Fever <span class="remove-tag">×</span>
+                </div>
+            </div>
+
+            <button class="analyze-btn">Analyze Symptoms</button>
+        </section>
+    </main>
+
+    <script>
+        // Add your symptom checking logic here
+        document.querySelector('.analyze-btn').addEventListener('click', function() {
+            // Implement symptom analysis functionality
+            alert('Analyzing symptoms... This feature will be implemented soon!');
+        });
+
+        // Handle symptom input and tag creation
+        const symptomInput = document.querySelector('.symptom-input');
+        const symptomTags = document.querySelector('.symptom-tags');
+
+        symptomInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && this.value.trim() !== '') {
+                createSymptomTag(this.value.trim());
+                this.value = '';
+            }
+        });
+
+        function createSymptomTag(symptom) {
+            const tag = document.createElement('div');
+            tag.className = 'symptom-tag';
+            tag.innerHTML = `${symptom} <span class="remove-tag">×</span>`;
+            
+            tag.querySelector('.remove-tag').addEventListener('click', function() {
+                tag.remove();
+            });
+
+            symptomTags.appendChild(tag);
+        }
+    </script>
+</body>
+</html>

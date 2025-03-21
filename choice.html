@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnodose - Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #2d3436;
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0984e3, #74b9ff);
+        }
+
+        .welcome-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-section img {
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-section h1 {
+            color: #0984e3;
+            font-size: 32px;
+            margin-bottom: 1rem;
+        }
+
+        .logo-section p {
+            color: #636e72;
+            font-size: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .choice-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .choice-btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .login-btn {
+            background-color: #0984e3;
+            color: white;
+        }
+
+        .login-btn:hover {
+            background-color: #074e83;
+        }
+
+        .register-btn {
+            background-color: white;
+            color: #0984e3;
+            border: 2px solid #0984e3;
+        }
+
+        .register-btn:hover {
+            background-color: #0984e3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="logo-section">
+            <img src="diagonodose-logo.png" alt="Diagnodose Logo">
+            <h1>Welcome to Diagnodose</h1>
+            <p>Your intelligent health companion for personalized medical guidance and care</p>
+        </div>
+
+        <div class="choice-buttons">
+            <button onclick="window.location.href='login.html'" class="choice-btn login-btn">Log In</button>
+            <button onclick="window.location.href='register.html'" class="choice-btn register-btn">Create Account</button>
+        </div>
+    </div>
+</body>
+</html>

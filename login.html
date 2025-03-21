@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnodose - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #2d3436;
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0984e3, #74b9ff);
+            
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-section img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .logo-section h1 {
+            color: #0984e3;
+            font-size: 24px;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-section p {
+            color: #636e72;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2d3436;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #0984e3;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #074e83;
+        }
+
+        .additional-options {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .additional-options a {
+            color: #0984e3;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .additional-options a:hover {
+            color: #074e83;
+        }
+
+        .social-login {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: #636e72;
+            margin-bottom: 1rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            border: 1px solid #dfe6e9;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: #f5f7fa;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <img src="diagonodose-logo.png" alt="Diagnodose Logo">
+            <h1>Diagnodose</h1>
+            <p>Your Health Companion</p>
+        </div>
+
+        <form action="/home" method="POST" id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="login-btn">Log In</button>
+        </form>
+
+        <div class="additional-options">
+            <a href="#forgot-password">Forgot Password?</a>
+            <span>|</span>
+            <a href="register.html">Create Account</a>
+        </div>
+
+        <div class="social-login">
+            <p>Or continue with</p>
+            <div class="social-buttons">
+                <button class="social-btn">
+                    <img src="google-icon.png" alt="Google" width="20"> Google
+                </button>
+                <button class="social-btn">
+                    <img src="apple-icon.png" alt="Apple" width="20"> Apple
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your authentication logic here
+            window.location.href = 'home.html'; // Redirect to home page after successful login
+        });
+
+        // Add some interactive animations
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateX(5px)';
+            });
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>
