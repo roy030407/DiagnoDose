@@ -96,6 +96,38 @@
             background-color: #0984e3;
             color: white;
         }
+
+        .social-login {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: #636e72;
+            margin-bottom: 1rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #dfe6e9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background-color: #f5f7fa;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +142,18 @@
             <button onclick="window.location.href='login.html'" class="choice-btn login-btn">Log In</button>
             <button onclick="window.location.href='register.html'" class="choice-btn register-btn">Create Account</button>
         </div>
+
+        <div class="social-login">
+            <p>Or continue with</p>
+            <div class="social-buttons">
+                <button class="social-btn">
+                    <img src="google.png" alt="Google" width="20"> Google
+                </button>
+                <button class="social-btn">
+                    <img src="apple.png" alt="Apple" width="20"> Apple
+                </button>
+            </div>
+        </div>  
     </div>
 </body>
 </html>
