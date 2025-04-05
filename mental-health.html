@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Support - Diagnodose</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fixed-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo h1 {
+            color: #0984e3;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: #0984e3;
+        }
+
+        .language-selector {
+            padding: 8px;
+            border: 1px solid #dfe6e9;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .profile-btn {
+            background-color: #0984e3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .profile-btn:hover {
+            background-color: #074e83;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin-bottom: 1rem;
+        }
+
+        .emergency-section {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .helpline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .helpline-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #0984e3;
+        }
+
+        .state-selector {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .professionals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .professional-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .professional-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .importance-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .importance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .importance-card {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-top: 4px solid #00b894;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2d3436;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #0984e3;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header class="fixed-menu">
+        <div class="logo">
+            <a href="home.html" style="text-decoration: none;">
+                <h1 id="site-title">Diagnodose</h1>
+            </a>
+        </div>
+        <a href="ayurveda.html" style="text-decoration: none; display: flex; align-items: center; margin-right: 20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #2ecc71; margin-right: 8px;">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.24 6 8.47V22h2v-1.53c.98-.34 1.88-.89 2.65-1.62l-1.42-1.42c-1.17 1.17-2.73 1.82-4.38 1.82-3.45 0-6.25-2.8-6.25-6.25S4.4 6.75 7.85 6.75c2.04 0 3.86 1.05 4.97 2.63l1.42-1.42C12.96 6.05 10.62 4.75 8 4.75c-3.45 0-6.25 2.8-6.25 6.25s2.8 6.25 6.25 6.25c1.65 0 3.21-.65 4.38-1.82l1.42 1.42c-.77.73-1.67 1.28-2.65 1.62V22h2v-1.53c3.49-1.23 6-4.55 6-8.47 0-4.97-4.03-9-9-9z"/>
+            </svg>
+            <span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #2ecc71; font-style: italic;">Ayurveda</span>
+        </a>
+        <nav class="nav-menu">
+            <a href="symptoms.html" class="nav-item" id="nav-symptoms">Check Your Symptoms</a>
+            <a href="find-doctor.html" class="nav-item" id="nav-doctor">Find a Doctor</a>
+            <a href="faqs.html" class="nav-item" id="nav-faq">Help & FAQs</a>
+            <select class="language-selector" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="te">తెలుగు</option>
+                <option value="ta">தமிழ்</option>
+                <option value="kn">ಕನ್ನಡ</option>
+            </select>
+            <a href="health-records.html" class="profile-btn" id="nav-records">My Health Records</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero-section">
+            <h1>Mental Health Support</h1>
+            <p>Your mental well-being matters. Find support, resources, and professional help here.</p>
+        </section>
+
+        <section class="emergency-section" id="helplines">
+            <h2 class="section-title">24/7 Emergency Helplines</h2>
+            <div class="helpline-grid">
+                <div class="helpline-card">
+                    <h3>National Mental Health Helpline</h3>
+                    <p>Toll-Free: <span class="highlight">1800-599-0019</span></p>
+                    <p>Available 24/7 in multiple languages</p>
+                </div>
+                <div class="helpline-card">
+                    <h3>AASRA</h3>
+                    <p>24x7 Helpline: <span class="highlight">+91-9820466726</span></p>
+                    <p>Email: aasrahelpline@yahoo.com</p>
+                </div>
+                <div class="helpline-card">
+                    <h3>Vandrevala Foundation</h3>
+                    <p>Helpline: <span class="highlight">+91-9999666555</span></p>
+                    <p>24/7 mental health support</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="importance-section" id="importance">
+            <h2 class="section-title">Why Mental Health Matters</h2>
+            <div class="importance-grid">
+                <div class="importance-card">
+                    <h3>Overall Well-being</h3>
+                    <p>Mental health is fundamental to our collective and individual ability to think, express emotions, interact with others, earn a living, and enjoy life.</p>
+                </div>
+                <div class="importance-card">
+                    <h3>Physical Health Connection</h3>
+                    <p>Mental health directly impacts physical health, affecting everything from heart health to immune system response.</p>
+                </div>
+                <div class="importance-card">
+                    <h3>Quality of Life</h3>
+                    <p>Good mental health contributes to better relationships, work performance, and ability to cope with life's challenges.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="professionals-section" id="professionals">
+            <h2 class="section-title">Find Mental Health Professionals</h2>
+            <select id="stateSelector" class="state-selector" onchange="showProfessionals()">
+                <option value="">Select Your State</option>
+                <option value="andhra-pradesh">Andhra Pradesh</option>
+                <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                <option value="assam">Assam</option>
+                <option value="bihar">Bihar</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="goa">Goa</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="haryana">Haryana</option>
+                <option value="himachal-pradesh">Himachal Pradesh</option>
+                <option value="jharkhand">Jharkhand</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="kerala">Kerala</option>
+                <option value="madhya-pradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="manipur">Manipur</option>
+                <option value="meghalaya">Meghalaya</option>
+                <option value="mizoram">Mizoram</option>
+                <option value="nagaland">Nagaland</option>
+                <option value="odisha">Odisha</option>
+                <option value="punjab">Punjab</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="sikkim">Sikkim</option>
+                <option value="tamil-nadu">Tamil Nadu</option>
+                <option value="telangana">Telangana</option>
+                <option value="tripura">Tripura</option>
+                <option value="uttar-pradesh">Uttar Pradesh</option>
+                <option value="uttarakhand">Uttarakhand</option>
+                <option value="west-bengal">West Bengal</option>
+            </select>
+            <div id="professionalsGrid" class="professionals-grid">
+                <!-- Professionals will be displayed here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const professionals = {
+            "andhra-pradesh": [
+                {name: "Dr. Indla Ramasubba Reddy", specialty: "Senior Psychiatrist", location: "Vijayawada", contact: "0866-2451-177"},
+                {name: "Dr. M.S. Reddy", specialty: "Psychiatrist", location: "Visakhapatnam", contact: "0891-2755-333"}
+            ],
+            "arunachal-pradesh": [
+                {name: "Dr. Tame Kena", specialty: "Psychiatrist", location: "Naharlagun", contact: "0360-2351-167"},
+                {name: "Dr. Ratan Kelkar", specialty: "Mental Health Specialist", location: "Itanagar", contact: "0360-2212-971"}
+            ],
+            "assam": [
+                {name: "Dr. Jayanta Das", specialty: "Psychiatrist", location: "Guwahati", contact: "0361-2234-567"},
+                {name: "Dr. Sanjay Mehta", specialty: "Mental Health Expert", location: "Dibrugarh", contact: "0373-2321-456"}
+            ],
+            "bihar": [
+                {name: "Dr. Vinod Kumar", specialty: "Senior Psychiatrist", location: "Patna", contact: "0612-2345-678"},
+                {name: "Dr. Rakesh Singh", specialty: "Clinical Psychiatrist", location: "Muzaffarpur", contact: "0621-2234-567"}
+            ],
+            "chhattisgarh": [
+                {name: "Dr. Pradeep Sharma", specialty: "Psychiatrist", location: "Raipur", contact: "0771-2234-567"},
+                {name: "Dr. Anita Verma", specialty: "Mental Health Specialist", location: "Bilaspur", contact: "07752-234-567"}
+            ],
+            "goa": [
+                {name: "Dr. Francis D'Souza", specialty: "Senior Psychiatrist", location: "Panaji", contact: "0832-2234-567"},
+                {name: "Dr. Maria Fernandes", specialty: "Clinical Psychologist", location: "Margao", contact: "0832-2734-567"}
+            ],
+            "gujarat": [
+                {name: "Dr. Rajesh Patel", specialty: "Psychiatrist", location: "Ahmedabad", contact: "079-2234-5678"},
+                {name: "Dr. Smita Shah", specialty: "Mental Health Expert", location: "Vadodara", contact: "0265-234-5678"}
+            ],
+            "haryana": [
+                {name: "Dr. Suresh Kumar", specialty: "Senior Psychiatrist", location: "Gurugram", contact: "0124-234-5678"},
+                {name: "Dr. Neha Gupta", specialty: "Clinical Psychiatrist", location: "Faridabad", contact: "0129-234-5678"}
+            ],
+            "himachal-pradesh": [
+                {name: "Dr. Ramesh Thakur", specialty: "Psychiatrist", location: "Shimla", contact: "0177-234-5678"},
+                {name: "Dr. Sunita Sharma", specialty: "Mental Health Specialist", location: "Manali", contact: "01902-234-567"}
+            ],
+            "jharkhand": [
+                {name: "Dr. Arun Kumar", specialty: "Senior Psychiatrist", location: "Ranchi", contact: "0651-234-5678"},
+                {name: "Dr. Priya Singh", specialty: "Clinical Psychologist", location: "Jamshedpur", contact: "0657-234-5678"}
+            ],
+            "karnataka": [
+                {name: "Dr. Shrinivas Rao", specialty: "Psychiatrist", location: "Bangalore", contact: "080-2234-5678"},
+                {name: "Dr. Lakshmi Kumar", specialty: "Mental Health Expert", location: "Mysore", contact: "0821-234-5678"}
+            ],
+            "kerala": [
+                {name: "Dr. Thomas George", specialty: "Senior Psychiatrist", location: "Thiruvananthapuram", contact: "0471-234-5678"},
+                {name: "Dr. Sara Joseph", specialty: "Clinical Psychiatrist", location: "Kochi", contact: "0484-234-5678"}
+            ],
+            "madhya-pradesh": [
+                {name: "Dr. Deepak Verma", specialty: "Psychiatrist", location: "Bhopal", contact: "0755-234-5678"},
+                {name: "Dr. Anjali Shukla", specialty: "Mental Health Specialist", location: "Indore", contact: "0731-234-5678"}
+            ],
+            "maharashtra": [
+                {name: "Dr. Ashok Patil", specialty: "Senior Psychiatrist", location: "Mumbai", contact: "022-2234-5678"},
+                {name: "Dr. Priya Desai", specialty: "Clinical Psychologist", location: "Pune", contact: "020-2234-5678"}
+            ],
+            "manipur": [
+                {name: "Dr. Laishram Singh", specialty: "Psychiatrist", location: "Imphal", contact: "0385-234-5678"},
+                {name: "Dr. Mary Kom", specialty: "Mental Health Expert", location: "Churachandpur", contact: "0384-234-5678"}
+            ],
+            "meghalaya": [
+                {name: "Dr. David Kharkrang", specialty: "Senior Psychiatrist", location: "Shillong", contact: "0364-234-5678"},
+                {name: "Dr. Patricia Lyngdoh", specialty: "Clinical Psychiatrist", location: "Tura", contact: "03651-234-567"}
+            ],
+            "mizoram": [
+                {name: "Dr. C. Lalthanpuia", specialty: "Psychiatrist", location: "Aizawl", contact: "0389-234-5678"},
+                {name: "Dr. Lalrinzuali", specialty: "Mental Health Specialist", location: "Lunglei", contact: "0372-234-5678"}
+            ],
+            "nagaland": [
+                {name: "Dr. Kevichusa", specialty: "Senior Psychiatrist", location: "Kohima", contact: "0370-234-5678"},
+                {name: "Dr. Akumla Longkumer", specialty: "Clinical Psychologist", location: "Dimapur", contact: "03862-234-567"}
+            ],
+            "odisha": [
+                {name: "Dr. Debasis Pattnaik", specialty: "Psychiatrist", location: "Bhubaneswar", contact: "0674-234-5678"},
+                {name: "Dr. Sujata Mishra", specialty: "Mental Health Expert", location: "Cuttack", contact: "0671-234-5678"}
+            ],
+            "punjab": [
+                {name: "Dr. Harpreet Singh", specialty: "Senior Psychiatrist", location: "Chandigarh", contact: "0172-234-5678"},
+                {name: "Dr. Manpreet Kaur", specialty: "Clinical Psychiatrist", location: "Amritsar", contact: "0183-234-5678"}
+            ],
+            "rajasthan": [
+                {name: "Dr. Mahesh Sharma", specialty: "Psychiatrist", location: "Jaipur", contact: "0141-234-5678"},
+                {name: "Dr. Priyanka Rathore", specialty: "Mental Health Specialist", location: "Jodhpur", contact: "0291-234-5678"}
+            ],
+            "sikkim": [
+                {name: "Dr. Pemba Sherpa", specialty: "Senior Psychiatrist", location: "Gangtok", contact: "03592-234-567"},
+                {name: "Dr. Tshering Bhutia", specialty: "Clinical Psychologist", location: "Namchi", contact: "03595-234-567"}
+            ],
+            "tamil-nadu": [
+                {name: "Dr. Ramachandran", specialty: "Psychiatrist", location: "Chennai", contact: "044-2234-5678"},
+                {name: "Dr. Lakshmi Narayanan", specialty: "Mental Health Expert", location: "Coimbatore", contact: "0422-234-5678"}
+            ],
+            "telangana": [
+                {name: "Dr. Krishna Reddy", specialty: "Senior Psychiatrist", location: "Hyderabad", contact: "040-2234-5678"},
+                {name: "Dr. Padma Rao", specialty: "Clinical Psychiatrist", location: "Warangal", contact: "0870-234-5678"}
+            ],
+            "tripura": [
+                {name: "Dr. Biplab Deb", specialty: "Psychiatrist", location: "Agartala", contact: "0381-234-5678"},
+                {name: "Dr. Rima Das", specialty: "Mental Health Specialist", location: "Udaipur", contact: "03821-234-567"}
+            ],
+            "uttar-pradesh": [
+                {name: "Dr. Rajesh Yadav", specialty: "Senior Psychiatrist", location: "Lucknow", contact: "0522-234-5678"},
+                {name: "Dr. Meena Agarwal", specialty: "Clinical Psychologist", location: "Kanpur", contact: "0512-234-5678"}
+            ],
+            "uttarakhand": [
+                {name: "Dr. Anil Rawat", specialty: "Psychiatrist", location: "Dehradun", contact: "0135-234-5678"},
+                {name: "Dr. Deepa Joshi", specialty: "Mental Health Expert", location: "Nainital", contact: "05942-234-567"}
+            ],
+            "west-bengal": [
+                {name: "Dr. Sashi Rai", specialty: "Senior Psychiatrist", location: "Kolkata", contact: "033-2282-1588"},
+                {name: "Dr. Pradip Saha", specialty: "Mental Health Expert", location: "Kolkata", contact: "033-2223-2456"}
+            ]
+        };
+
+        function showProfessionals() {
+            const state = document.getElementById('stateSelector').value;
+            const grid = document.getElementById('professionalsGrid');
+            grid.innerHTML = '';
+
+            if (state && professionals[state]) {
+                professionals[state].forEach(prof => {
+                    grid.innerHTML += `
+                        <div class="professional-card">
+                            <h3>${prof.name}</h3>
+                            <p><strong>Specialty:</strong> ${prof.specialty}</p>
+                            <p><strong>Location:</strong> ${prof.location}</p>
+                            <p><strong>Contact:</strong> ${prof.contact}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+    </script>
+
+    <script>
+      const translations = {
+          en: {
+              "site-title": "Diagnodose",
+              "nav-symptoms": "Check Your Symptoms",
+              "nav-doctor": "Find a Doctor",
+              "nav-faq": "Help & FAQs",
+              "nav-records": "My Health Records",
+              "mental-health-heading": "Mental Health Support",
+              "mental-health-desc": "Your mental well-being matters. Find support, resources, and professional help here.",
+              "emergency-title": "24/7 Emergency Helplines",
+              "national-helpline-title": "National Mental Health Helpline",
+              "national-helpline-desc": "Available 24/7 in multiple languages",
+              "aasra-title": "AASRA",
+              "vandrevala-title": "Vandrevala Foundation",
+              "vandrevala-desc": "24/7 mental health support",
+              "importance-title": "Why Mental Health Matters",
+              "wellbeing-title": "Overall Well-being",
+              "wellbeing-desc": "Mental health is fundamental to our collective and individual ability to think, express emotions, interact with others, earn a living, and enjoy life.",
+              "physical-title": "Physical Health Connection",
+              "physical-desc": "Mental health directly impacts physical health, affecting everything from heart health to immune system response.",
+              "quality-title": "Quality of Life",
+              "quality-desc": "Good mental health contributes to better relationships, work performance, and ability to cope with life's challenges.",
+              "professionals-title": "Find Mental Health Professionals",
+              "select-state": "Select Your State"
+          },
+          hi: {
+              "site-title": "डायग्नोडोज़",
+              "nav-symptoms": "अपने लक्षण जांचें",
+              "nav-doctor": "डॉक्टर खोजें",
+              "nav-faq": "सहायता और सामान्य प्रश्न",
+              "nav-records": "मेरे स्वास्थ्य रिकॉर्ड",
+              "mental-health-heading": "मानसिक स्वास्थ्य सहायता",
+              "mental-health-desc": "आपका मानसिक स्वास्थ्य महत्वपूर्ण है। यहां सहायता, संसाधन और पेशेवर मदद प्राप्त करें।",
+              "emergency-title": "24/7 आपातकालीन हेल्पलाइन",
+              "national-helpline-title": "राष्ट्रीय मानसिक स्वास्थ्य हेल्पलाइन",
+              "national-helpline-desc": "कई भाषाओं में 24/7 उपलब्ध",
+              "aasra-title": "आसरा",
+              "vandrevala-title": "वंद्रेवाला फाउंडेशन",
+              "vandrevala-desc": "24/7 मानसिक स्वास्थ्य सहायता",
+              "importance-title": "मानसिक स्वास्थ्य क्यों महत्वपूर्ण है",
+              "wellbeing-title": "समग्र कल्याण",
+              "wellbeing-desc": "मानसिक स्वास्थ्य हमारी सामूहिक और व्यक्तिगत सोचने, भावनाओं को व्यक्त करने, दूसरों के साथ बातचीत करने, जीविका कमाने और जीवन का आनंद लेने की क्षमता के लिए मौलिक है।",
+              "physical-title": "शारीरिक स्वास्थ्य कनेक्शन",
+              "physical-desc": "मानसिक स्वास्थ्य सीधे शारीरिक स्वास्थ्य को प्रभावित करता है।",
+              "quality-title": "जीवन की गुणवत्ता",
+              "quality-desc": "अच्छा मानसिक स्वास्थ्य बेहतर रिश्तों और कार्य प्रदर्शन में योगदान करता है।",
+              "professionals-title": "मानसिक स्वास्थ्य पेशेवरों को खोजें",
+              "select-state": "अपना राज्य चुनें"
+          },
+          te: {
+              "site-title": "డయాగ్నోడోస్",
+              "nav-symptoms": "మీ లక్షణాలను తనిఖీ చేయండి",
+              "nav-doctor": "వైద్యుడిని కనుగొనండి",
+              "nav-faq": "సహాయం & సందేహాలు",
+              "nav-records": "నా ఆరోగ్య రికార్డులు",
+              "mental-health-heading": "మానసిక ఆరోగ్య మద్దతు",
+              "mental-health-desc": "మీ మానసిక ఆరోగ్యం ముఖ్యం. ఇక్కడ మద్దతు, వనరులు మరియు వృత్తి సహాయం పొందండి.",
+              "emergency-title": "24/7 అత్యవసర హెల్ప్‌లైన్‌లు",
+              "national-helpline-title": "జాతీయ మానసిక ఆరోగ్య హెల్ప్‌లైన్",
+              "national-helpline-desc": "అనేక భాషలలో 24/7 అందుబాటులో ఉంది",
+              "aasra-title": "ఆశ్రయ",
+              "vandrevala-title": "వంద్రేవాలా ఫౌండేషన్",
+              "vandrevala-desc": "24/7 మానసిక ఆరోగ్య మద్దతు",
+              "importance-title": "మానసిక ఆరోగ్యం ఎందుకు ముఖ్యం",
+              "wellbeing-title": "మొత్తం శ్రేయస్సు",
+              "wellbeing-desc": "మానసిక ఆరోగ్యం మన సామూహిక మరియు వ్యక్తిగత ఆలోచన, భావోద్వేగాలను వ్యక్తపరచడం, ఇతరులతో సంభాషించడం కోసం ప్రాథమికం.",
+              "physical-title": "శారీరక ఆరోగ్య అనుసంధానం",
+              "physical-desc": "మానసిక ఆరోగ్యం శారీరక ఆరోగ్యాన్ని ప్రత్యక్షంగా ప్రభావితం చేస్తుంది.",
+              "quality-title": "జీవిత నాణ్యత",
+              "quality-desc": "మంచి మానసిక ఆరోగ్యం మంచి సంబంధాలకు దోహదం చేస్తుంది.",
+              "professionals-title": "మానసిక ఆరోగ్య నిపుణులను కనుగొనండి",
+              "select-state": "మీ రాష్ట్రాన్ని ఎంచుకోండి"
+          },
+          ta: {
+              "site-title": "டயாக்னோடோஸ்",
+              "nav-symptoms": "உங்கள் அறிகுறிகளை சரிபார்க்கவும்",
+              "nav-doctor": "மருத்துவரைக் கண்டறியவும்",
+              "nav-faq": "உதவி & கேள்விகள்",
+              "nav-records": "எனது சுகாதார பதிவுகள்",
+              "mental-health-heading": "மன நல ஆதரவு",
+              "mental-health-desc": "உங்கள் மன நலம் முக்கியம். ஆதரவு, வளங்கள் மற்றும் தொழில்முறை உதவியைப் பெறுங்கள்.",
+              "emergency-title": "24/7 அவசர உதவி எண்கள்",
+              "national-helpline-title": "தேசிய மனநல உதவி எண்",
+              "national-helpline-desc": "பல மொழிகளில் 24/7 கிடைக்கிறது",
+              "aasra-title": "ஆஸ்ரா",
+              "vandrevala-title": "வந்த்ரேவாலா அறக்கட்டளை",
+              "vandrevala-desc": "24/7 மன நல ஆதரவு",
+              "importance-title": "மன நலம் ஏன் முக்கியம்",
+              "wellbeing-title": "ஒட்டுமொத்த நல்வாழ்வு",
+              "wellbeing-desc": "மன நலம் நமது கூட்டு மற்றும் தனிப்பட்ட சிந்தனை, உணர்வுகளை வெளிப்படுத்துதல், மற்றவர்களுடன் தொடர்புகொள்வதற்கு அடிப்படையானது.",
+              "physical-title": "உடல் நல இணைப்பு",
+              "physical-desc": "மன நலம் உடல் நலத்தை நேரடியாக பாதிக்கிறது.",
+              "quality-title": "வாழ்க்கை தரம்",
+              "quality-desc": "நல்ல மன நலம் சிறந்த உறவுகளுக்கு வழிவகுக்கிறது.",
+              "professionals-title": "மன நல நிபுணர்களைக் கண்டறியவும்",
+              "select-state": "உங்கள் மாநிலத்தைத் தேர்ந்தெடுக்கவும்"
+          },
+          kn: {
+              "site-title": "ಡಯಾಗ್ನೋಡೋಸ್",
+              "nav-symptoms": "ನಿಮ್ಮ ರೋಗಲಕ್ಷಣಗಳನ್ನು ಪರಿಶೀಲಿಸಿ",
+              "nav-doctor": "ವೈದ್ಯರನ್ನು ಹುಡುಕಿ",
+              "nav-faq": "ಸಹಾಯ & ಪ್ರಶ್ನೆಗಳು",
+              "nav-records": "ನನ್ನ ಆರೋಗ್ಯ ದಾಖಲೆಗಳು",
+              "mental-health-heading": "ಮಾನಸಿಕ ಆರೋಗ್ಯ ಬೆಂಬಲ",
+              "mental-health-desc": "ನಿಮ್ಮ ಮಾನಸಿಕ ಆರೋಗ್ಯ ಮುಖ್ಯ. ಬೆಂಬಲ, ಸಂಪನ್ಮೂಲಗಳು ಮತ್ತು ವೃತ್ತಿಪರ ಸಹಾಯವನ್ನು ಪಡೆಯಿರಿ.",
+              "emergency-title": "24/7 ತುರ್ತು ಸಹಾಯವಾಣಿಗಳು",
+              "national-helpline-title": "ರಾಷ್ಟ್ರೀಯ ಮಾನಸಿಕ ಆರೋಗ್ಯ ಸಹಾಯವಾಣಿ",
+              "national-helpline-desc": "ಬಹು ಭಾಷೆಗಳಲ್ಲಿ 24/7 ಲಭ್ಯವಿದೆ",
+              "aasra-title": "ಆಸರಾ",
+              "vandrevala-title": "ವಂದ್ರೇವಾಲಾ ಫೌಂಡೇಶನ್",
+              "vandrevala-desc": "24/7 ಮಾನಸಿಕ ಆರೋಗ್ಯ ಬೆಂಬಲ",
+              "importance-title": "ಮಾನಸಿಕ ಆರೋಗ್ಯ ಏಕೆ ಮುಖ್ಯ",
+              "wellbeing-title": "ಒಟ್ಟಾರೆ ಯೋಗಕ್ಷೇಮ",
+              "wellbeing-desc": "ಮಾನಸಿಕ ಆರೋಗ್ಯವು ನಮ್ಮ ಸಾಮೂಹಿಕ ಮತ್ತು ವೈಯಕ್ತಿಕ ಯೋಚನೆ, ಭಾವನೆಗಳನ್ನು ವ್ಯಕ್ತಪಡಿಸುವುದು, ಇತರರೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸುವುದಕ್ಕೆ ಮೂಲಭೂತವಾಗಿದೆ.",
+              "physical-title": "ದೈಹಿಕ ಆರೋಗ್ಯ ಸಂಪರ್ಕ",
+              "physical-desc": "ಮಾನಸಿಕ ಆರೋಗ್ಯವು ದೈಹಿಕ ಆರೋಗ್ಯದ ಮೇಲೆ ನೇರ ಪ್ರಭಾವ ಬೀರುತ್ತದೆ.",
+              "quality-title": "ಜೀವನ ಗುಣಮಟ್ಟ",
+              "quality-desc": "ಉತ್ತಮ ಮಾನಸಿಕ ಆರೋಗ್ಯವು ಉತ್ತಮ ಸಂಬಂಧಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತದೆ.",
+              "professionals-title": "ಮಾನಸಿಕ ಆರೋಗ್ಯ ತಜ್ಞರನ್ನು ಹುಡುಕಿ",
+              "select-state": "ನಿಮ್ಮ ರಾಜ್ಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+          }
+      };
+
+      function changeLanguage(lang) {
+          const elements = translations[lang];
+          for (let id in elements) {
+              const element = document.getElementById(id);
+              if (element) {
+                  element.textContent = elements[id];
+              }
+          }
+      }
+    </script>
+</body>
+</html>
+

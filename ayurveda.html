@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurveda & Natural Healing - Diagnodose</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f5e0 0%, #d4edc1 100%);
+            color: #2d3436;
+            line-height: 1.6;
+           
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 10px auto;
+            padding: 1rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0984e3, #74b9ff);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+        }
+
+        .header h1 {
+            font-size: 1em;
+            margin-bottom: 1rem;
+        }
+
+        .fixed-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            z-index: 1000;
+            flex-wrap: nowrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-item {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #0984e3;
+        }
+
+        .language-selector {
+            padding: 0.5rem;
+            border: 1px solid #dfe6e9;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            max-width: 84.5px;
+        }
+
+        .profile-btn {
+            background: #0984e3;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-btn:hover {
+            background: #074e83;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .intro-image {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .remedy-selector {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .remedy-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+
+        .remedy-image {
+            width: 100%;
+            border-radius: 5px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .yoga-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .yoga-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .yoga-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .yoga-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fixed-menu {
+            background: linear-gradient(135deg, #81c784, #aed581); /* green theme */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="fixed-menu">
+        <div class="logo">
+            <a href="home.html" style="text-decoration: none;">
+                <h1 id="site-title">Diagnodose</h1>
+            </a>
+        </div>
+        <a href="ayurveda.html" style="text-decoration: none; display: flex; align-items: center; margin-right: 20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #2ecc71; margin-right: 8px;">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.24 6 8.47V22h2v-1.53c.98-.34 1.88-.89 2.65-1.62l-1.42-1.42c-1.17 1.17-2.73 1.82-4.38 1.82-3.45 0-6.25-2.8-6.25-6.25S4.4 6.75 7.85 6.75c2.04 0 3.86 1.05 4.97 2.63l1.42-1.42C12.96 6.05 10.62 4.75 8 4.75c-3.45 0-6.25 2.8-6.25 6.25s2.8 6.25 6.25 6.25c1.65 0 3.21-.65 4.38-1.82l1.42 1.42c-.77.73-1.67 1.28-2.65 1.62V22h2v-1.53c3.49-1.23 6-4.55 6-8.47 0-4.97-4.03-9-9-9z"/>
+            </svg>
+            <span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #2ecc71; font-style: italic;">Ayurveda</span>
+        </a>
+        <nav class="nav-menu">
+            <a href="symptoms.html" class="nav-item">Check Your Symptoms</a>
+            <a href="find-doctor.html" class="nav-item">Find a Doctor</a>
+            <a href="faqs.html" class="nav-item">Help & FAQs</a>
+            <select class="language-selector">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="te">తెలుగు</option>
+                <option value="ta">தமிழ்</option>
+                <option value="kn">ಕನ್ನಡ</option>
+            </select>
+            <a href="health-records.html" class="profile-btn" id="nav-records">My Health Records</a>
+        </nav>
+    </header>
+    
+
+    <div class="main-content">
+        <section class="intro-section fade-in">
+            <div>
+                <h2>Welcome to Natural Healing</h2>
+                <p>Discover the ancient wisdom of Ayurveda and natural remedies that have been practiced for thousands of years. Our platform combines traditional knowledge with modern accessibility to help you achieve holistic wellness.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b" alt="Ayurvedic ingredients" class="intro-image">
+        </section>
+
+        <div class="remedy-selector fade-in">
+            <h3>Find Natural Remedies</h3>
+            <select id="ailmentSelector" onchange="showRemedies()">
+                <option value="">Select your concern</option>
+                <option value="digestion">Digestive Issues</option>
+                <option value="stress">Stress & Anxiety</option>
+                <option value="sleep">Sleep Problems</option>
+                <option value="joint">Joint Pain</option>
+                <option value="skin">Skin Problems</option>
+                <option value="respiratory">Respiratory Issues</option>
+            </select>
+
+            <div id="remedyResults"></div>
+        </div>
+
+        <section class="yoga-section fade-in">
+            <h2>Yoga for Wellness</h2>
+            <p>Complement your Ayurvedic journey with yoga practices</p>
+            <div class="yoga-grid">
+                <div class="yoga-card">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773" alt="Yoga practice">
+                    <div class="resource-card">
+                        <h3>Yoga With Adriene</h3>
+                        <p>Popular YouTube channel for all levels</p>
+                        <a href="https://www.youtube.com/user/yogawithadriene" target="_blank">Visit Channel →</a>
+                    </div>
+                </div>
+                <div class="yoga-card">
+                    <img src="isha-foundation.avif" alt="Meditation">
+                    <div class="resource-card">
+                        <h3>Tanuj Foundation</h3>
+                        <p>Traditional yoga practices and meditation</p>
+                        <a href="https://isha.sadhguru.org/yoga" target="_blank">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources-grid fade-in">
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c" alt="Ayurvedic medicines">
+                <h3>Trusted Ayurvedic Resources</h3>
+                <a href="https://www.ayush.gov.in" target="_blank">Ministry of AYUSH →</a>
+            </div>
+            <div class="resource-card">
+                <img src="About-himalaya.png" alt="Natural products">
+                <h3>Buy Authentic Products</h3>
+                <a href="https://www.himalayawellness.com" target="_blank">Himalaya Wellness →</a>
+            </div>
+            <div class="resource-card">
+                <img src="research-ayurveda.jpeg" alt="Research">
+                <h3>Learn More</h3>
+                <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3336279/" target="_blank">Scientific Research →</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const remedies = {
+            digestion: [
+                {
+                    problem: "Indigestion",
+                    remedies: ["Drink ginger tea", "Chew fennel seeds after meals", "Try Triphala powder"],
+                    products: "https://himalayawellness.in/collections/all",
+                    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5"
+                }
+            ],
+            stress: [
+                {
+                    problem: "Anxiety and Stress",
+                    remedies: ["Ashwagandha supplements", "Brahmi tea", "Practice pranayama"],
+                    products: "https://himalayawellness.in/collections/all",
+                    image: "https://images.unsplash.com/photo-1600026453346-a44501602a02"
+                }
+            ],
+            sleep: [
+                {
+                    problem: "Insomnia",
+                    remedies: ["Warm milk with turmeric", "Chamomile tea", "Shankhpushpi supplements"],
+                    products: "https://himalayawellness.in/collections/all", 
+                    image: "insomnia.webp"
+                }
+            ],
+            joint: [
+                {
+                    problem: "Joint Pain",
+                    remedies: ["Turmeric milk", "Guggulu supplements", "Sesame oil massage"],
+                    products: "https://himalayawellness.in/collections/all",
+                    image: "https://images.unsplash.com/photo-1519824145371-296894a0daa9"
+                }
+            ],
+            skin: [
+                {
+                    problem: "Skin Issues",
+                    remedies: ["Neem paste application", "Aloe vera gel", "Turmeric face pack"],
+                    products: "https://himalayawellness.in/collections/all",
+                    image: "https://images.unsplash.com/photo-1552693673-1bf958298935"
+                }
+            ],
+            respiratory: [
+                {
+                    problem: "Respiratory Problems",
+                    remedies: ["Steam inhalation with tulsi", "Honey with ginger", "Sitopaladi powder"],
+                    products: "hhttps://himalayawellness.in/collections/all",
+                    image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843"
+                }
+            ]
+        };
+
+        function showRemedies() {
+            const ailment = document.getElementById('ailmentSelector').value;
+            const resultsDiv = document.getElementById('remedyResults');
+            resultsDiv.innerHTML = '';
+
+            if (ailment && remedies[ailment]) {
+                remedies[ailment].forEach(item => {
+                    resultsDiv.innerHTML += `
+                        <div class="remedy-card">
+                            <div>
+                                <h3>${item.problem}</h3>
+                                <h4>Natural Remedies:</h4>
+                                <ul>
+                                    ${item.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+                                </ul>
+                                <p><a href="${item.products}" target="_blank">Shop Related Products →</a></p>
+                            </div>
+                            <img src="${item.image}" alt="${item.problem}" class="remedy-image">
+                        </div>
+                    `;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
