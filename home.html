@@ -37,10 +37,6 @@
             gap: 10px;
         }
 
-        .logo img {
-            height: 40px;
-        }
-
         .logo h1 {
             color: #0984e3;
             font-size: 24px;
@@ -175,71 +171,214 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="diagonodose-logo.png" alt="Diagnodose Logo">
-            <h1>Diagnodose</h1>
+            <h1 id="site-title">Diagnodose</h1>
         </div>
+        <a href="ayurveda.html" style="text-decoration: none; display: flex; align-items: center; margin-right: 20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #2ecc71; margin-right: 8px;">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.24 6 8.47V22h2v-1.53c.98-.34 1.88-.89 2.65-1.62l-1.42-1.42c-1.17 1.17-2.73 1.82-4.38 1.82-3.45 0-6.25-2.8-6.25-6.25S4.4 6.75 7.85 6.75c2.04 0 3.86 1.05 4.97 2.63l1.42-1.42C12.96 6.05 10.62 4.75 8 4.75c-3.45 0-6.25 2.8-6.25 6.25s2.8 6.25 6.25 6.25c1.65 0 3.21-.65 4.38-1.82l1.42 1.42c-.77.73-1.67 1.28-2.65 1.62V22h2v-1.53c3.49-1.23 6-4.55 6-8.47 0-4.97-4.03-9-9-9z"/>
+            </svg>
+            <span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #2ecc71; font-style: italic;">Ayurveda</span>
+        </a>
         <nav class="nav-menu">
-            <a href="symptoms.html" class="nav-item">Check Your Symptoms</a>
-            <a href="find-doctor.html" class="nav-item">Find a Doctor</a>
-            <a href="faqs.html" class="nav-item">Help & FAQs</a>
-            <select class="language-selector">
+            <a href="symptoms.html" class="nav-item" id="nav-symptoms">Check Your Symptoms</a>
+            <a href="find-doctor.html" class="nav-item" id="nav-doctor">Find a Doctor</a>
+            <a href="faqs.html" class="nav-item" id="nav-faq">Help & FAQs</a>
+            <select class="language-selector" onchange="changeLanguage(this.value)">
                 <option value="en">English</option>
                 <option value="hi">हिंदी</option>
                 <option value="te">తెలుగు</option>
                 <option value="ta">தமிழ்</option>
                 <option value="kn">ಕನ್ನಡ</option>
             </select>
-            <a href="health-records.html" class="profile-btn">My Health Records</a>
+            <a href="health-records.html" class="profile-btn" id="nav-records">My Health Records</a>
         </nav>
     </header>
 
     <main class="main-content">
         <section class="hero-section fade-in">
-            <h2>Welcome to Diagnodose</h2>
-            <p>Your intelligent health companion that helps you understand your symptoms, find appropriate medications, and connect with healthcare professionals.</p>
+            <h2 id="hero-heading">Welcome to Diagnodose</h2>
+            <p id="hero-desc">Your intelligent health companion that helps you understand your symptoms, find appropriate medications, and connect with healthcare professionals.</p>
         </section>
 
         <section class="features-grid">
             <div class="feature-card fade-in">
-                <h3>Symptom Analysis</h3>
-                <p>Advanced AI-powered system to analyze your symptoms and provide potential conditions with high accuracy.</p>
+                <h3 id="feature-1-title">Symptom Analysis</h3>
+                <p id="feature-1-desc">Advanced AI-powered system to analyze your symptoms and provide potential conditions with high accuracy.</p>
             </div>
             <div class="feature-card fade-in">
-                <h3>Medicine Recommendations</h3>
-                <p>Get personalized medicine recommendations based on your symptoms and local availability.</p>
+                <h3 id="feature-2-title">Medicine Recommendations</h3>
+                <p id="feature-2-desc">Get personalized medicine recommendations based on your symptoms and local availability.</p>
             </div>
             <div class="feature-card fade-in">
-                <h3>Doctor Connect</h3>
-                <p>Find and connect with qualified healthcare professionals in your area for expert consultation.</p>
+                <h3 id="feature-3-title">Doctor Connect</h3>
+                <p id="feature-3-desc">Find and connect with qualified healthcare professionals in your area for expert consultation.</p>
+            </div>
+        </section>
+
+        <section class="mental-health-section fade-in" style="background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%); padding: 3rem; border-radius: 20px; margin: 2rem 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            <div class="mental-health-content" style="text-align: center;">
+                <h2 id="mental-health-title" style="color: #2d3436; margin-bottom: 1.5rem; font-size: 2.2rem;">Mental Health Support</h2>
+                <p style="color: #2d3436; font-size: 1.1rem; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Your mental well-being matters. We provide comprehensive support through various channels to help you maintain good mental health.
+                </p>
+                <div class="mental-health-links" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <a href="mental-health.html" class="support-link" style="text-decoration: none; background: white; padding: 1rem 2rem; border-radius: 10px; color: #2d3436; font-weight: 600; transition: transform 0.3s ease;">
+                        24/7 Helplines →
+                    </a>
+                    <a href="mental-health.html" class="support-link" style="text-decoration: none; background: white; padding: 1rem 2rem; border-radius: 10px; color: #2d3436; font-weight: 600; transition: transform 0.3s ease;">
+                        Self-Care Resources →
+                    </a>
+                    <a href="mental-health.html" class="support-link" style="text-decoration: none; background: white; padding: 1rem 2rem; border-radius: 10px; color: #2d3436; font-weight: 600; transition: transform 0.3s ease;">
+                        Find Professional Help →
+                    </a>
+                </div>
             </div>
         </section>
 
         <section class="news-section fade-in">
-            <h2>Health News & Updates</h2>
+            <h2 id="news-title">Health News & Updates</h2>
             <div class="news-grid">
                 <article class="news-card">
                     <img src="covid19.jpg" alt="COVID-19 Updates">
                     <div class="news-content">
-                        <h3>Latest COVID-19 Variants</h3>
-                        <p>Stay informed about the newest variants and protection measures.</p>
-                    </div>
-                </article>
-                <article class="news-card">
-                    <img src="mental-health.jpeg" alt="Mental Health">
-                    <div class="news-content">
-                        <h3>Mental Health Awareness</h3>
-                        <p>Understanding the importance of mental well-being in modern times.</p>
+                        <h3 id="news-1-title">Latest COVID-19 Variants</h3>
+                        <p id="news-1-desc">Stay informed about the newest variants and protection measures.</p>
                     </div>
                 </article>
                 <article class="news-card">
                     <img src="healthy-lifestyle.jpg" alt="Healthy Living">
                     <div class="news-content">
-                        <h3>Healthy Living Tips</h3>
-                        <p>Simple lifestyle changes for better health and wellness.</p>
+                        <h3 id="news-3-title">Healthy Living Tips</h3>
+                        <p id="news-3-desc">Simple lifestyle changes for better health and wellness.</p>
                     </div>
                 </article>
             </div>
         </section>
     </main>
+
+    <script>
+        const translations = {
+            en: {
+                "site-title": "Diagnodose",
+                "nav-symptoms": "Check Your Symptoms",
+                "nav-doctor": "Find a Doctor",
+                "nav-faq": "Help & FAQs",
+                "nav-records": "My Health Records",
+                "hero-heading": "Welcome to Diagnodose",
+                "hero-desc": "Your intelligent health companion that helps you understand your symptoms, find appropriate medications, and connect with healthcare professionals.",
+                "feature-1-title": "Symptom Analysis",
+                "feature-1-desc": "Advanced AI-powered system to analyze your symptoms and provide potential conditions with high accuracy.",
+                "feature-2-title": "Medicine Recommendations",
+                "feature-2-desc": "Get personalized medicine recommendations based on your symptoms and local availability.",
+                "feature-3-title": "Doctor Connect",
+                "feature-3-desc": "Find and connect with qualified healthcare professionals in your area for expert consultation.",
+                "news-title": "Health News & Updates",
+                "news-1-title": "Latest COVID-19 Variants",
+                "news-1-desc": "Stay informed about the newest variants and protection measures.",
+                "news-2-title": "Mental Health Awareness",
+                "news-2-desc": "Understanding the importance of mental well-being in modern times.",
+                "news-3-title": "Healthy Living Tips",
+                "news-3-desc": "Simple lifestyle changes for better health and wellness."
+            },
+            hi: {
+                "site-title": "Diagnodose",
+                "nav-symptoms": "अपने लक्षण जांचें",
+                "nav-doctor": "डॉक्टर खोजें",
+                "nav-faq": "सहायता और सामान्य प्रश्न",
+                "nav-records": "मेरे स्वास्थ्य रिकॉर्ड",
+                "hero-heading": "Diagnodose में आपका स्वागत है",
+                "hero-desc": "आपका बुद्धिमान स्वास्थ्य साथी जो आपके लक्षणों को समझने, दवाएं खोजने और डॉक्टरों से जोड़ने में मदद करता है।",
+                "feature-1-title": "लक्षण विश्लेषण",
+                "feature-1-desc": "AI-संचालित सिस्टम आपके लक्षणों का विश्लेषण करता है और संभावित स्थितियां बताता है।",
+                "feature-2-title": "दवा सिफारिशें",
+                "feature-2-desc": "आपके लक्षणों के अनुसार दवाओं की अनुशंसा करता है।",
+                "feature-3-title": "डॉक्टर कनेक्ट",
+                "feature-3-desc": "अपने क्षेत्र में योग्य डॉक्टरों से संपर्क करें।",
+                "news-title": "स्वास्थ्य समाचार और अपडेट",
+                "news-1-title": "COVID-19 नवीनतम वेरिएंट्स",
+                "news-1-desc": "नए वेरिएंट्स और सुरक्षा उपायों की जानकारी रखें।",
+                "news-2-title": "मानसिक स्वास्थ्य जागरूकता",
+                "news-2-desc": "आधुनिक जीवन में मानसिक स्वास्थ्य का महत्व।",
+                "news-3-title": "स्वस्थ जीवनशैली टिप्स",
+                "news-3-desc": "बेहतर स्वास्थ्य के लिए आसान जीवनशैली परिवर्तन।"
+            },
+            te: {
+                "site-title": "Diagnodose",
+                "nav-symptoms": "లక్షణాలను తనిఖీ చేయండి",
+                "nav-doctor": "డాక్టర్‌ని కనుగొనండి",
+                "nav-faq": "సహాయం మరియు ప్రశ్నలు",
+                "nav-records": "నా ఆరోగ్య రికార్డులు",
+                "hero-heading": "Diagnodose కు స్వాగతం",
+                "hero-desc": "మీ లక్షణాలను అర్థం చేసుకునేందుకు, మందులను గుర్తించేందుకు మరియు వైద్యులను కనెక్ట్ చేసేందుకు మీ తెలివైన ఆరోಗ్య సహాయకుడు.",
+                "feature-1-title": "లక్షణ విశ్లేషణ",
+                "feature-1-desc": "AI ఆధారిత సిస్టమ్ మీ లక్షణాలను విశ్లేషిస్తుంది.",
+                "feature-2-title": "మందుల సూచనలు",
+                "feature-2-desc": "వ్యక్తిగతమైన మందుల సిఫారసులు పొందండి.",
+                "feature-3-title": "డాక్టర్ కనెక్ట్",
+                "feature-3-desc": "మీ ప్రాంతంలోని వైద్యులను కనెక్ట్ చేయండి.",
+                "news-title": "ఆరోగ్య వార్తలు & అప్డేట్స్",
+                "news-1-title": "తాజా COVID-19 వేరియంట్లు",
+                "news-1-desc": "తాజా వేరియంట్లు మరియు రక్షణ చర్యలు తెలుసుకోండి.",
+                "news-2-title": "మానసిక ఆరోగ్య అవగాహన",
+                "news-2-desc": "నేటి రోజుల్లో మానసిక ఆరోగ్య ప్రాముఖ్యత.",
+                "news-3-title": "ఆరోగ్యకరమైన జీవనశైలి సూచనలు",
+                "news-3-desc": "ఆరోగ్యానికి సరళమైన మార్పులు."
+            },
+            ta: {
+                "site-title": "Diagnodose",
+                "nav-symptoms": "அறிகுறிகளை சரிபார்க்கவும்",
+                "nav-doctor": "மருத்துவரை கண்டறிக",
+                "nav-faq": "உதவி மற்றும் கேள்விகள்",
+                "nav-records": "எனது சுகாதார பதிவுகள்",
+                "hero-heading": "Diagnodose இல் வரவேற்கிறோம்",
+                "hero-desc": "உங்கள் அறிகுறிகளை புரிந்து கொள்ளவும், மருந்துகளை பரிந்துரைக்கவும், மருத்துவர்களுடன் இணைக்கவும் உதவும் அறிவாற்றலுள்ள உடல்நல துணை.",
+                "feature-1-title": "அறிகுறி பகுப்பாய்வு",
+                "feature-1-desc": "AI ஆதரித்த முறை மூலம் அறிகுறிகளை பகுப்பாய்வு செய்யுங்கள்.",
+                "feature-2-title": "மருந்து பரிந்துரைகள்",
+                "feature-2-desc": "உங்கள் அறிகுறிகளுக்கேற்ப மருந்துகளைப் பரிந்துரை செய்கிறது.",
+                "feature-3-title": "மருத்துவர் இணைப்பு",
+                "feature-3-desc": "உங்கள் பகுதியில் உள்ள மருத்துவருடன் இணைக.",
+                "news-title": "சுகாதார செய்திகள் மற்றும் புதுப்பிப்புகள்",
+                "news-1-title": "புதிய COVID-19 வகைகள்",
+                "news-1-desc": "புதிய வகைகள் மற்றும் பாதுகாப்பு நடவடிக்கைகளை அறிந்து கொள்ளுங்கள்.",
+                "news-2-title": "மனநலம் விழிப்புணர்வு",
+                "news-2-desc": "இன்றைய காலத்தில் மனநலத்தின் முக்கியத்துவம்.",
+                "news-3-title": "ஆரோக்கிய வாழ்வியல் குறிப்பு",
+                "news-3-desc": "செய்யக்கூடிய எளிய ஆரோக்கிய மாற்றங்கள்."
+            },
+            kn: {
+                "site-title": "Diagnodose",
+                "nav-symptoms": "ಲಕ್ಷಣಗಳನ್ನು ಪರಿಶೀಲಿಸಿ",
+                "nav-doctor": "ವೈದ್ಯರನ್ನು ಹುಡುಕಿ",
+                "nav-faq": "ಸಹಾಯ ಮತ್ತು ಪ್ರಶ್ನೆಗಳು",
+                "nav-records": "ನನ್ನ ಆರೋಗ್ಯ ದಾಖಲೆಗಳು",
+                "hero-heading": "Diagnodose ಗೆ ಸ್ವಾಗತ",
+                "hero-desc": "ನಿಮ್ಮ ಲಕ್ಷಣಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು, ಔಷಧಿಗಳನ್ನು ಶಿಫಾರಸು ಮಾಡಲು, ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಲು ಸಹಾಯ ಮಾಡುವ ಬುದ್ಧಿವಂತ ಆರೋಗ್ಯ ಸಹಾಯಕ.",
+                "feature-1-title": "ಲಕ್ಷಣ ವಿಶ್ಲೇಷಣೆ",
+                "feature-1-desc": "AI ಆಧಾರಿತ ವಿಶ್ಲೇಷಣೆ ನಿಮ್ಮ ಲಕ್ಷಣಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತದೆ.",
+                "feature-2-title": "ಔಷಧಿ ಶಿಫಾರಸುಗಳು",
+                "feature-2-desc": "ವೈಯಕ್ತಿಕ ಔಷಧ ಶಿಫಾರಸುಗಳನ್ನು ಪಡೆಯಿರಿ.",
+                "feature-3-title": "ವೈದ್ಯ ಸಂಪರ್ಕ",
+                "feature-3-desc": "ನಿಮ್ಮ ಪ್ರದೇಶದ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+                "news-title": "ಆರೋಗ್ಯ ಸುದ್ದಿಗಳು ಮತ್ತು ನವೀಕರಣಗಳು",
+                "news-1-title": "ಇತ್ತೀಚಿನ COVID-19 ರೂಪಾಂತರಗಳು",
+                "news-1-desc": "ಹೊಸ ರೂಪಾಂತರಗಳು ಮತ್ತು ಸುರಕ್ಷತಾ ಕ್ರಮಗಳನ್ನು ತಿಳಿದುಕೊಳ್ಳಿ.",
+                "news-2-title": "ಮಾನಸಿಕ ಆರೋಗ್ಯ ಅರಿವು",
+                "news-2-desc": "ಇಂದು ಮಾನಸಿಕ ಆರೋಗ್ಯದ ಮಹತ್ವ.",
+                "news-3-title": "ಆರೋಗ್ಯಕರ ಜೀವನಶೈಲಿ ಸಲಹೆಗಳು",
+                "news-3-desc": "ಸರಳ ಜೀವನಶೈಲಿ ಬದಲಾವಣೆಗಳು ಉತ್ತಮ ಆರೋಗ್ಯಕ್ಕಾಗಿ."
+            }
+        };
+
+        function changeLanguage(lang) {
+        const trans = translations[lang];
+        if (!trans) return;
+
+        for (const key in trans) {
+            const el = document.getElementById(key);
+            if (el) el.textContent = trans[key];
+        }
+        }
+    </script>
 </body>
 </html>
