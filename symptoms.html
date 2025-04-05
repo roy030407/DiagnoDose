@@ -1,233 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnodose - Check Your Symptoms</title>
-    <style>
-        * {
+  <meta charset="UTF-8">
+  <title>Symptom Checker with Medicines & Advice</title>
+  <style>
+
+    * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
+        
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
 
-        body {
-            background-color: #f5f7fa;
-            color: #2d3436;
-            line-height: 1.6;
-            padding-top: 70px;
-        }
+    .fixed-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    .logo h1 {
+        font-size: 1.5rem;
+        color: #0984e3;
+    }
 
-        .header {
-            background: linear-gradient(135deg, #0984e3, #74b9ff);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
 
-        .symptom-checker {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .nav-item {
+        color: #2d3436;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
 
-        .symptom-input {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 2px solid #dfe6e9;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
+    .nav-item:hover {
+        color: #0984e3;
+    }
 
-        .symptom-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
+    .language-selector {
+        padding: 0.5rem;
+        border: 1px solid #dfe6e9;
+        border-radius: 5px;
+        font-size: 0.9rem;
+    }
 
-        .symptom-tag {
-            background: #0984e3;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .profile-btn {
+        background: #0984e3;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
 
-        .remove-tag {
-            cursor: pointer;
-            font-weight: bold;
-        }
+    .profile-btn:hover {
+        background: #074e83;
+    }
 
-        .analyze-btn {
-            background: #0984e3;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            width: 100%;
-        }
+    body {
+        padding-top: 70px;
+    }
 
-        .analyze-btn:hover {
-            background: #074e83;
-        }
+    h1 {
+      margin-bottom: 20px;
+    }
 
-        .fixed-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
+    .container {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+    .list {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-        .logo img {
-            height: 40px;
-        }
+.symptom-item {
+  padding: 5px 10px;
+  margin: 4px 0;
+  font-size: 0.9em;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-        .logo h1 {
-            font-size: 1.5rem;
-            color: #0984e3;
-        }
+.symptom-item:hover {
+  background-color: #d1d1d1;
+}
 
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
+.symptom-item.selected {
+  background-color: #4caf50;
+  color: white;
+}
 
-        .nav-item {
-            color: #2d3436;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.list-title {
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
 
-        .nav-item:hover {
-            color: #0984e3;
-        }
+#searchInput {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
 
-        .language-selector {
-            padding: 0.5rem;
-            border: 1px solid #dfe6e9;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
 
-        .profile-btn {
-            background: #0984e3;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
+    button {
+      padding: 8px 12px;
+      margin-top: 10px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #2196f3;
+      color: white;
+    }
 
-        .profile-btn:hover {
-            background: #074e83;
-        }
-    </style>
+    button:hover {
+      background-color: #1976d2;
+    }
+
+    textarea {
+      margin-top: 10px;
+      width: 100%;
+      height: 80px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .disease-match {
+      background-color: #ffeb3b;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .disease-details {
+      background-color: #fff9c4;
+      padding: 8px;
+      margin-top: 6px;
+      border-left: 4px solid #f57f17;
+      font-size: 0.95em;
+    }
+
+    .disease-details ul {
+      margin: 5px 0 10px 20px;
+    }
+  </style>
 </head>
 <body>
-    <header class="fixed-menu">
-        <div class="logo">
-            <img src="diagonodose-logo.png" alt="Diagnodose Logo">
-            <h1>Diagnodose</h1>
-        </div>
-        <nav class="nav-menu">
-            <a href="symptoms.html" class="nav-item">Check Your Symptoms</a>
-            <a href="find-doctor.html" class="nav-item">Find a Doctor</a>
-            <a href="faqs.html" class="nav-item">Help & FAQs</a>
-            <select class="language-selector">
-                <option value="en">English</option>
-                <option value="hi">हिंदी</option>
-                <option value="te">తెలుగు</option>
-                <option value="ta">தமிழ்</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-            <a href="health-records.html" class="profile-btn">My Health Records</a>
-        </nav>
-    </header>
 
-    <main class="container">
-        <section class="header">
-            <h1>Check Your Symptoms</h1>
-            <p>Get instant insights about your health concerns</p>
-        </section>
+  <header class="fixed-menu">
+    <div class="logo">
+        <a href="home.html">
+            <h1 style="color:#0984e3;">Diagnodose</h1>
+        </a>
+    </div>
+    <a href="ayurveda.html" style="text-decoration: none; display: flex; align-items: center; margin-right: 20px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #2ecc71; margin-right: 8px;">
+            <path d="M12 3c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.24 6 8.47V22h2v-1.53c.98-.34 1.88-.89 2.65-1.62l-1.42-1.42c-1.17 1.17-2.73 1.82-4.38 1.82-3.45 0-6.25-2.8-6.25-6.25S4.4 6.75 7.85 6.75c2.04 0 3.86 1.05 4.97 2.63l1.42-1.42C12.96 6.05 10.62 4.75 8 4.75c-3.45 0-6.25 2.8-6.25 6.25s2.8 6.25 6.25 6.25c1.65 0 3.21-.65 4.38-1.82l1.42 1.42c-.77.73-1.67 1.28-2.65 1.62V22h2v-1.53c3.49-1.23 6-4.55 6-8.47 0-4.97-4.03-9-9-9z"/>
+        </svg>
+        <span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #2ecc71; font-style: italic;">Ayurveda</span>
+    </a>
+    <nav class="nav-menu">
+        <a href="symptoms.html" class="nav-item">Check Your Symptoms</a>
+        <a href="find-doctor.html" class="nav-item">Find a Doctor</a>
+        <a href="faqs.html" class="nav-item">Help & FAQs</a>
+        <select class="language-selector" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="te">తెలుగు</option>
+            <option value="ta">தமிழ்</option>
+            <option value="kn">ಕನ್ನಡ</option>
+        </select>
+        <a href="health-records.html" class="profile-btn">My Health Records</a>
+    </nav>
+</header>
 
-        <section class="symptom-checker">
-            <input type="text" class="symptom-input" placeholder="Enter your symptoms (e.g., headache, fever, cough)">
-            
-            <div class="symptom-tags">
-                <!-- Example tags - These would be dynamically added via JavaScript -->
-                <div class="symptom-tag">
-                    Headache <span class="remove-tag">×</span>
-                </div>
-                <div class="symptom-tag">
-                    Fever <span class="remove-tag">×</span>
-                </div>
-            </div>
+  <h1>Symptom Checker with Medicines & Remedies</h1>
 
-            <button class="analyze-btn">Analyze Symptoms</button>
-        </section>
-    </main>
+  <input type="text" id="searchInput" placeholder="Search symptoms..." oninput="filterSymptoms()">
 
-    <script>
-        // Add your symptom checking logic here
-        document.querySelector('.analyze-btn').addEventListener('click', function() {
-            // Implement symptom analysis functionality
-            alert('Analyzing symptoms... This feature will be implemented soon!');
-        });
+  <div class="container">
+    <div class="list">
+      <div class="list-title">Available Symptoms</div>
+      <div id="symptomList"></div>
+    </div>
 
-        // Handle symptom input and tag creation
-        const symptomInput = document.querySelector('.symptom-input');
-        const symptomTags = document.querySelector('.symptom-tags');
+    <div class="list">
+      <div class="list-title">Selected Symptoms</div>
+      <div id="selectedSymptoms"></div>
+      <button onclick="clearAll()">Clear All</button>
+      <button onclick="exportSymptoms()">Export</button>
+      <textarea id="exported" placeholder="Exported symptoms will appear here..."></textarea>
+    </div>
 
-        symptomInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && this.value.trim() !== '') {
-                createSymptomTag(this.value.trim());
-                this.value = '';
-            }
-        });
+    <div class="list">
+      <div class="list-title">Possible Diseases</div>
+      <div id="diseaseMatches"></div>
+    </div>
+  </div>
 
-        function createSymptomTag(symptom) {
-            const tag = document.createElement('div');
-            tag.className = 'symptom-tag';
-            tag.innerHTML = `${symptom} <span class="remove-tag">×</span>`;
-            
-            tag.querySelector('.remove-tag').addEventListener('click', function() {
-                tag.remove();
-            });
+  <script>
+    const symptoms = [
+      "Headache", "Fever", "Cough", "Fatigue", "Runny Nose", "Sore Throat", "Nausea", "Body Ache",
+      "Sneezing", "Chills", "Diarrhea", "Constipation", "Dizziness", "Chest Pain", "Shortness of Breath",
+      "Abdominal Pain", "Back Pain", "Rash", "Itchy Eyes", "Blurred Vision", "Earache", "Loss of Smell",
+      "Loss of Taste", "Sweating", "Vomiting", "Muscle Weakness", "Joint Pain", "Swollen Lymph Nodes",
+      "Palpitations", "Frequent Urination", "Burning Sensation", "Dry Mouth", "Cold Hands", "Hair Loss",
+      "Dry Skin", "Sleepiness", "Insomnia", "Anxiety", "Depression", "Irritability", "Confusion",
+      "Neck Pain", "Tingling"
+    ];
 
-            symptomTags.appendChild(tag);
+    const diseases = {
+      "Common Cold": ["Sneezing", "Cough", "Runny Nose", "Sore Throat", "Fever"],
+      "Flu": ["Fever", "Cough", "Fatigue", "Chills", "Body Ache", "Headache"],
+      "COVID-19": ["Fever", "Cough", "Fatigue", "Loss of Smell", "Loss of Taste", "Shortness of Breath"],
+      "Migraine": ["Headache", "Nausea", "Vomiting", "Blurred Vision"],
+      "Food Poisoning": ["Nausea", "Vomiting", "Diarrhea", "Abdominal Pain", "Fever"],
+      "Anemia": ["Fatigue", "Dizziness", "Shortness of Breath"],
+      "Depression": ["Fatigue", "Sleepiness", "Insomnia", "Anxiety", "Depression", "Irritability"],
+      "UTI": ["Burning Sensation", "Frequent Urination", "Abdominal Pain", "Fever"],
+      "Hypothyroidism": ["Fatigue", "Dry Skin", "Hair Loss", "Depression"],
+      "Dengue": ["Fever", "Headache", "Joint Pain", "Rash", "Muscle Weakness", "Sweating"]
+    };
+
+    const diseaseDetails = {
+      "Common Cold": {
+        medicines: [
+          { name: "Paracetamol", use: "Helps reduce fever and mild pain" },
+          { name: "Cetirizine", use: "Relieves runny nose and sneezing" }
+        ],
+        advice: ["Drink warm fluids", "Rest well", "Avoid cold food", "Steam inhalation"]
+      },
+      "Flu": {
+        medicines: [
+          { name: "Oseltamivir", use: "Antiviral medicine to reduce flu symptoms" },
+          { name: "Ibuprofen", use: "Reduces fever and body aches" }
+        ],
+        advice: ["Drink plenty of water", "Get rest", "Eat nourishing food"]
+      },
+      "COVID-19": {
+        medicines: [
+          { name: "Paracetamol", use: "Reduces fever and body pain" },
+          { name: "Vitamin C & Zinc", use: "Boosts immunity" }
+        ],
+        advice: ["Isolate and rest", "Monitor oxygen levels", "Stay hydrated"]
+      },
+      "Migraine": {
+        medicines: [
+          { name: "Sumatriptan", use: "Helps relieve migraine pain" },
+          { name: "Naproxen", use: "Reduces inflammation and pain" }
+        ],
+        advice: ["Avoid loud noises", "Rest in a dark room", "Stay hydrated"]
+      },
+      "Food Poisoning": {
+        medicines: [
+          { name: "ORS", use: "Replenishes lost fluids" },
+          { name: "Loperamide", use: "Controls diarrhea" }
+        ],
+        advice: ["Eat bland food", "Drink lots of water", "Rest well"]
+      },
+      "Anemia": {
+        medicines: [
+          { name: "Iron Supplements", use: "Increases red blood cells" },
+          { name: "Folic Acid", use: "Helps make healthy blood cells" }
+        ],
+        advice: ["Eat leafy greens", "Get blood checked", "Take prescribed supplements"]
+      },
+      "Depression": {
+        medicines: [
+          { name: "SSRIs", use: "Improves mood and reduces anxiety" },
+          { name: "Counseling", use: "Talk therapy helps with emotional support" }
+        ],
+        advice: ["Talk to loved ones", "Exercise daily", "Avoid alcohol"]
+      },
+      "UTI": {
+        medicines: [
+          { name: "Ciprofloxacin", use: "Antibiotic for UTI" },
+          { name: "Paracetamol", use: "Reduces pain and fever" }
+        ],
+        advice: ["Drink lots of water", "Don't hold urine", "Maintain hygiene"]
+      },
+      "Hypothyroidism": {
+        medicines: [
+          { name: "Levothyroxine", use: "Replaces thyroid hormone" }
+        ],
+        advice: ["Take meds on empty stomach", "Do regular thyroid tests", "Eat iodine-rich food"]
+      },
+      "Dengue": {
+        medicines: [
+          { name: "Paracetamol", use: "Controls fever and pain" }
+        ],
+        advice: ["Avoid NSAIDs", "Stay hydrated", "Get platelet count checked"]
+      }
+    };
+
+    const selected = new Set();
+
+    const symptomListDiv = document.getElementById("symptomList");
+    const selectedSymptomsDiv = document.getElementById("selectedSymptoms");
+    const diseaseMatchesDiv = document.getElementById("diseaseMatches");
+
+    function renderSymptoms(list = symptoms) {
+      symptomListDiv.innerHTML = "";
+      list.forEach(symptom => {
+        const div = document.createElement("div");
+        div.textContent = symptom;
+        div.classList.add("symptom-item");
+        if (selected.has(symptom)) {
+          div.classList.add("selected");
         }
-    </script>
+        div.addEventListener("click", () => {
+          if (selected.has(symptom)) {
+            selected.delete(symptom);
+          } else {
+            selected.add(symptom);
+          }
+          updateLists();
+        });
+        symptomListDiv.appendChild(div);
+      });
+    }
+
+    function updateSelectedList() {
+      selectedSymptomsDiv.innerHTML = "";
+      Array.from(selected).forEach(symptom => {
+        const div = document.createElement("div");
+        div.textContent = symptom;
+        div.classList.add("symptom-item", "selected");
+        div.addEventListener("click", () => {
+          selected.delete(symptom);
+          updateLists();
+        });
+        selectedSymptomsDiv.appendChild(div);
+      });
+    }
+
+    function updateDiseaseMatches() {
+      const matchResults = [];
+
+      for (const disease in diseases) {
+        const symptomsOfDisease = diseases[disease];
+        const matches = symptomsOfDisease.filter(symptom => selected.has(symptom));
+        if (matches.length > 0) {
+          matchResults.push({
+            disease,
+            matchCount: matches.length,
+            total: symptomsOfDisease.length,
+            matchedSymptoms: matches
+          });
+        }
+      }
+
+      matchResults.sort((a, b) => b.matchCount - a.matchCount);
+
+      diseaseMatchesDiv.innerHTML = "";
+
+      if (matchResults.length === 0) {
+        diseaseMatchesDiv.innerHTML = "<p>No matching diseases found.</p>";
+        return;
+      }
+
+      matchResults.forEach(result => {
+        const div = document.createElement("div");
+        div.classList.add("disease-match");
+        div.innerHTML = `<strong>${result.disease}</strong> (${result.matchCount}/${result.total} symptoms matched)`;
+        div.addEventListener("click", () => toggleDiseaseDetails(div, result.disease));
+        diseaseMatchesDiv.appendChild(div);
+      });
+    }
+
+    function toggleDiseaseDetails(container, diseaseName) {
+      const existing = container.querySelector(".disease-details");
+      if (existing) {
+        existing.remove();
+        return;
+      }
+
+      const details = diseaseDetails[diseaseName];
+      if (!details) return;
+
+      const detailDiv = document.createElement("div");
+      detailDiv.classList.add("disease-details");
+
+      const medList = details.medicines.map(m => `<li><strong>${m.name}:</strong> ${m.use}</li>`).join("");
+      const adviceList = details.advice.map(a => `<li>${a}</li>`).join("");
+
+      detailDiv.innerHTML = `
+        <div><strong>Medicines:</strong><ul>${medList}</ul></div>
+        <div><strong>Advice:</strong><ul>${adviceList}</ul></div>
+      `;
+      container.appendChild(detailDiv);
+    }
+
+    function updateLists() {
+      filterSymptoms();
+      updateSelectedList();
+      updateDiseaseMatches();
+    }
+
+    function filterSymptoms() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = symptoms.filter(symptom =>
+        symptom.toLowerCase().includes(searchTerm)
+      );
+      renderSymptoms(filtered);
+    }
+
+    function clearAll() {
+      selected.clear();
+      updateLists();
+    }
+
+    function exportSymptoms() {
+      document.getElementById("exported").value = Array.from(selected).join(", ");
+    }
+
+    updateLists();
+  </script>
+
 </body>
 </html>
