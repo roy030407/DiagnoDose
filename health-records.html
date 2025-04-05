@@ -118,83 +118,270 @@
             background: #ff7675;
             color: #d63031;
         }
+
+        .upload-box {
+            border: 2px dashed #ccc;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>My Health Records</h1>
+    <header class="fixed-menu">
+        <div class="logo">
+          <a href="home.html" style="text-decoration: none;">
+            <h1 data-i18n="brand">Diagnodose</h1>
+          </a>
         </div>
-    </header>
+        <a href="ayurveda.html" style="text-decoration: none; display: flex; align-items: center; margin-right: 20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" style="fill: #2ecc71; margin-right: 8px;">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 3.92 2.51 7.24 6 8.47V22h2v-1.53c.98-.34 1.88-.89 2.65-1.62l-1.42-1.42c-1.17 1.17-2.73 1.82-4.38 1.82-3.45 0-6.25-2.8-6.25-6.25S4.4 6.75 7.85 6.75c2.04 0 3.86 1.05 4.97 2.63l1.42-1.42C12.96 6.05 10.62 4.75 8 4.75c-3.45 0-6.25 2.8-6.25 6.25s2.8 6.25 6.25 6.25c1.65 0 3.21-.65 4.38-1.82l1.42 1.42c-.77.73-1.67 1.28-2.65 1.62V22h2v-1.53c3.49-1.23 6-4.55 6-8.47 0-4.97-4.03-9-9-9z"/>
+            </svg>
+            <span style="font-family: 'Playfair Display', serif; font-size: 20px; color: #2ecc71; font-style: italic;">Ayurveda</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="symptoms.html" class="nav-item" data-i18n="nav_symptoms">Check Your Symptoms</a>
+          <a href="find-doctor.html" class="nav-item" data-i18n="nav_find">Find a Doctor</a>
+          <a href="faqs.html" class="nav-item" data-i18n="nav_faqs">Help & FAQs</a>
+          <select class="language-selector" onchange="setLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="te">తెలుగు</option>
+            <option value="ta">தமிழ்</option>
+            <option value="kn">ಕನ್ನಡ</option>
+          </select>
+          <a href="health-records.html" class="profile-btn" data-i18n="nav_records">My Health Records</a>
+        </nav>
+      </header>
 
-    <main class="container">
+      <main class="container">
+        <section class="header">
+          <h1 data-i18n="page_title">My Health Records</h1>
+        </section>
+    
         <section class="profile-summary">
-            <div class="vital-stats">
-                <div class="stat-card">
-                    <h3>Height</h3>
-                    <p>175 cm</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Weight</h3>
-                    <p>70 kg</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Blood Type</h3>
-                    <p>O+</p>
-                </div>
-                <div class="stat-card">
-                    <h3>BMI</h3>
-                    <p>22.9</p>
-                </div>
+          <div class="vital-stats">
+            <div class="stat-card">
+              <h3 data-i18n="height">Height</h3>
+              <p>175 cm</p>
             </div>
+            <div class="stat-card">
+              <h3 data-i18n="weight">Weight</h3>
+              <p>70 kg</p>
+            </div>
+            <div class="stat-card">
+              <h3 data-i18n="blood">Blood Type</h3>
+              <p>O+</p>
+            </div>
+            <div class="stat-card">
+              <h3 data-i18n="bmi">BMI</h3>
+              <p>22.9</p>
+            </div>
+          </div>
         </section>
-
+    
         <section class="medical-history">
-            <h2>Medical History</h2>
-            
-            <div class="history-item">
-                <h3>Chronic Conditions</h3>
-                <ul>
-                    <li>Asthma (Diagnosed 2015)</li>
-                    <li>Seasonal Allergies</li>
-                </ul>
+          <h2 data-i18n="med_history">Medical History</h2>
+          <div class="history-item">
+            <h3 data-i18n="chronic">Chronic Conditions</h3>
+            <ul>
+              <li>Asthma (Diagnosed 2015)</li>
+              <li>Seasonal Allergies</li>
+            </ul>
+          </div>
+    
+          <div class="history-item">
+            <h3 data-i18n="flu_visit">Recent Visit - Flu Symptoms (October 15, 2023)</h3>
+            <p data-i18n="flu_symptoms">Symptoms: High fever, body aches, cough</p>
+            <div class="medication-list">
+              <div class="medication-item">
+                Tamiflu 75mg <span class="effectiveness effective" data-i18n="highly_effective">Highly Effective</span>
+              </div>
+              <div class="medication-item">
+                Paracetamol 500mg <span class="effectiveness moderate" data-i18n="moderate">Moderately Effective</span>
+              </div>
             </div>
-
-            <div class="history-item">
-                <h3>Recent Visit - Flu Symptoms (October 15, 2023)</h3>
-                <p>Symptoms: High fever, body aches, cough</p>
-                <div class="medication-list">
-                    <div class="medication-item">
-                        Tamiflu 75mg <span class="effectiveness effective">Highly Effective</span>
-                    </div>
-                    <div class="medication-item">
-                        Paracetamol 500mg <span class="effectiveness moderate">Moderately Effective</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="history-item">
-                <h3>Allergic Reaction (July 3, 2023)</h3>
-                <p>Cause: Pollen exposure</p>
-                <div class="medication-list">
-                    <div class="medication-item">
-                        Cetirizine 10mg <span class="effectiveness effective">Highly Effective</span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </section>
-
+    
         <section class="medical-history">
-            <h2>Vaccination History</h2>
-            <div class="history-item">
-                <ul>
-                    <li>COVID-19 Vaccination (Complete) - Last dose: March 2023</li>
-                    <li>Influenza Vaccine - September 2023</li>
-                    <li>Tetanus Booster - January 2022</li>
-                </ul>
-            </div>
+          <h2 data-i18n="vaccination">Vaccination History</h2>
+          <div class="history-item">
+            <ul>
+              <li data-i18n="covid">COVID-19 Vaccination - Last dose: March 2023</li>
+              <li data-i18n="flu_vaccine">Influenza Vaccine - September 2023</li>
+              <li data-i18n="tetanus">Tetanus Booster - January 2022</li>
+            </ul>
+          </div>
         </section>
-    </main>
+    
+        <section class="medical-history">
+          <h2 data-i18n="lab_reports">Lab Reports</h2>
+          <div class="history-item">
+            <ul>
+              <li>Blood Test – June 2023</li>
+              <li>Allergy Test – July 2022</li>
+              <li>X-Ray (Chest) – Feb 2022</li>
+            </ul>
+          </div>
+        </section>
+    
+        <section class="medical-history">
+          <h2 data-i18n="prescription_upload">Prescription Upload</h2>
+          <div class="upload-box">
+            <input type="file" id="upload" />
+            <p data-i18n="upload_note">Upload prescription files (PDF, JPG, PNG)</p>
+          </div>
+        </section>
+      </main>
+
+      <script>
+        const translations = {
+          en: {
+            brand: "Diagnodose",
+            nav_symptoms: "Check Your Symptoms",
+            nav_find: "Find a Doctor",
+            nav_faqs: "Help & FAQs",
+            nav_records: "My Health Records",
+            page_title: "My Health Records",
+            height: "Height",
+            weight: "Weight",
+            blood: "Blood Type",
+            bmi: "BMI",
+            med_history: "Medical History",
+            chronic: "Chronic Conditions",
+            flu_visit: "Recent Visit - Flu Symptoms (October 15, 2023)",
+            flu_symptoms: "Symptoms: High fever, body aches, cough",
+            highly_effective: "Highly Effective",
+            moderate: "Moderately Effective",
+            vaccination: "Vaccination History",
+            covid: "COVID-19 Vaccination - Last dose: March 2023",
+            flu_vaccine: "Influenza Vaccine - September 2023",
+            tetanus: "Tetanus Booster - January 2022",
+            lab_reports: "Lab Reports",
+            prescription_upload: "Prescription Upload",
+            upload_note: "Upload prescription files (PDF, JPG, PNG)"
+          },
+          hi: {
+            brand: "डायग्नोडोज़",
+            nav_symptoms: "अपने लक्षण जांचें",
+            nav_find: "डॉक्टर खोजें",
+            nav_faqs: "सहायता और प्रश्न",
+            nav_records: "मेरे स्वास्थ्य रिकॉर्ड",
+            page_title: "मेरे स्वास्थ्य रिकॉर्ड",
+            height: "ऊँचाई",
+            weight: "वज़न",
+            blood: "ब्लड ग्रुप",
+            bmi: "बीएमआई",
+            med_history: "चिकित्सा इतिहास",
+            chronic: "पुरानी बीमारियाँ",
+            flu_visit: "हाल की यात्रा - फ्लू के लक्षण (15 अक्टूबर, 2023)",
+            flu_symptoms: "लक्षण: तेज़ बुखार, बदन दर्द, खांसी",
+            highly_effective: "अत्यधिक प्रभावी",
+            moderate: "मध्यम प्रभावी",
+            vaccination: "टीकाकरण इतिहास",
+            covid: "कोविड-19 टीकाकरण - अंतिम खुराक: मार्च 2023",
+            flu_vaccine: "इन्फ्लूएंजा वैक्सीन - सितंबर 2023",
+            tetanus: "टेटनस बूस्टर - जनवरी 2022",
+            lab_reports: "प्रयोगशाला रिपोर्ट्स",
+            prescription_upload: "प्रेस्क्रिप्शन अपलोड करें",
+            upload_note: "प्रेस्क्रिप्शन फ़ाइलें अपलोड करें (PDF, JPG, PNG)"
+          },
+          te: {
+            brand: "డయగ్నోడోస్",
+            nav_symptoms: "లక్షణాలు తనిఖీ చేయండి",
+            nav_find: "డాక్టర్‌ను కనుగొనండి",
+            nav_faqs: "సహాయం & ప్రశ్నలు",
+            nav_records: "నా ఆరోగ్య రికార్డులు",
+            page_title: "నా ఆరోగ్య రికార్డులు",
+            height: "ఎత్తు",
+            weight: "బరువు",
+            blood: "రక్తపు గ్రూప్",
+            bmi: "బిఎంఐ",
+            med_history: "వైద్య చరిత్ర",
+            chronic: "నిరంతర పరిస్థితులు",
+            flu_visit: "ఇటీవలి సందర్శన - ఫ్లూ లక్షణాలు (అక్టోబర్ 15, 2023)",
+            flu_symptoms: "లక్షణాలు: జ్వరము, శరీర నొప్పులు, దగ్గు",
+            highly_effective: "చాలా ప్రభావవంతమైనది",
+            moderate: "మధ్యమ ప్రభావం",
+            vaccination: "టీకాలు చరిత్ర",
+            covid: "COVID-19 టీకా - చివరి డోస్: మార్చి 2023",
+            flu_vaccine: "ఇన్ఫ్లూయెంజా టీకా - సెప్టెంబర్ 2023",
+            tetanus: "టెటానస్ బూస్టర్ - జనవరి 2022",
+            lab_reports: "ల్యాబ్ నివేదికలు",
+            prescription_upload: "ప్రిస్క్రిప్షన్ అప్‌లోడ్",
+            upload_note: "ప్రిస్క్రిప్షన్ ఫైళ్లను అప్‌లోడ్ చేయండి (PDF, JPG, PNG)"
+          },
+          ta: {
+            brand: "டையக்னோடோஸ்",
+            nav_symptoms: "உங்கள் அறிகுறிகளை சரிபார்க்கவும்",
+            nav_find: "மருத்துவரை கண்டறி",
+            nav_faqs: "உதவி மற்றும் கேள்விகள்",
+            nav_records: "என் சுகாதார பதிவுகள்",
+            page_title: "என் சுகாதார பதிவுகள்",
+            height: "உயரம்",
+            weight: "எடை",
+            blood: "இரத்த வகை",
+            bmi: "பிஎம்ஐ",
+            med_history: "மருத்துவ வரலாறு",
+            chronic: "நீடித்த நிலைகள்",
+            flu_visit: "சமீபத்திய பார்வை - காய்ச்சல் அறிகுறிகள்",
+            flu_symptoms: "அறிகுறிகள்: உயர் காய்ச்சல், உடல் வலி, இருமல்",
+            highly_effective: "மிகவும் பயனுள்ளதாக உள்ளது",
+            moderate: "மிதமான பயனுள்ள",
+            vaccination: "தடுப்பூசி வரலாறு",
+            covid: "COVID-19 தடுப்பூசி - கடைசி டோஸ்: மார்ச் 2023",
+            flu_vaccine: "இன்ஃப்ளூயென்சா தடுப்பூசி - செப்டம்பர் 2023",
+            tetanus: "டெட்டனஸ் பூஸ்டர் - ஜனவரி 2022",
+            lab_reports: "ஆய்வறிக்கை",
+            prescription_upload: "மருந்துப் பரிந்துரை பதிவேற்றம்",
+            upload_note: "மருந்துப் பரிந்துரை கோப்புகளை பதிவேற்றவும் (PDF, JPG, PNG)"
+          },
+          kn: {
+            brand: "ಡಯಾಗ್ನೋಡೋಸ್",
+            nav_symptoms: "ನಿಮ್ಮ ಲಕ್ಷಣಗಳನ್ನು ಪರಿಶೀಲಿಸಿ",
+            nav_find: "ವೈದ್ಯರನ್ನು ಹುಡುಕಿ",
+            nav_faqs: "ಸಹಾಯ ಮತ್ತು ಪ್ರಶ್ನೆಗಳು",
+            nav_records: "ನನ್ನ ಆರೋಗ್ಯ ದಾಖಲೆಗಳು",
+            page_title: "ನನ್ನ ಆರೋಗ್ಯ ದಾಖಲೆಗಳು",
+            height: "ಎತ್ತರ",
+            weight: "ತೂಕ",
+            blood: "ರಕ್ತದ ಗುಂಪು",
+            bmi: "ಬಿಎಮ್‌ಐ",
+            med_history: "ವೈದ್ಯಕೀಯ ಇತಿಹಾಸ",
+            chronic: "ದೀರ್ಘಕಾಲಿಕ ಅಸ್ವಸ್ಥತೆಗಳು",
+            flu_visit: "ಇತ್ತೀಚಿನ ಭೇಟಿ - ಜ್ವರ ಲಕ್ಷಣಗಳು (ಅಕ್ಟೋಬರ್ 15, 2023)",
+            flu_symptoms: "ಲಕ್ಷಣಗಳು: ಜ್ವರ, ದೇಹ ನೋವು, ಕೆಮ್ಮು",
+            highly_effective: "ಅತ್ಯಂತ ಪರಿಣಾಮಕಾರಿ",
+            moderate: "ಮಧ್ಯಮ ಪರಿಣಾಮಕಾರಿ",
+            vaccination: "ಟೀಕೆ ಇತಿಹಾಸ",
+            covid: "COVID-19 ಲಸಿಕೆ - ಕೊನೆಯ ಡೋಸ್: ಮಾರ್ಚ್ 2023",
+            flu_vaccine: "ಇನ್ಫ್ಲೂಯೆಂಜಾ ಲಸಿಕೆ - ಸೆಪ್ಟೆಂಬರ್ 2023",
+            tetanus: "ಟೆಟನಸ್ ಬೂಸ್ಟರ್ - ಜನವರಿ 2022",
+            lab_reports: "ಲ್ಯಾಬ್ ವರದಿಗಳು",
+            prescription_upload: "ವೈದ್ಯರ ಪರ್ಸ್ಕ್ರಿಪ್ಶನ್ ಅಪ್‌ಲೋಡ್",
+            upload_note: "ಪರ್ಸ್ಕ್ರಿಪ್ಶನ್ ಫೈಲ್‌ಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ (PDF, JPG, PNG)"
+          }
+        };
+    
+        function setLanguage(lang) {
+          const elements = document.querySelectorAll("[data-i18n]");
+          elements.forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            if (translations[lang] && translations[lang][key]) {
+              el.innerText = translations[lang][key];
+            }
+          });
+        }
+    
+        // Default to English
+        document.addEventListener("DOMContentLoaded", () => {
+          setLanguage("en");
+        });
+      </script>
 
     <script>
         // Add fade-in animation for sections
@@ -288,23 +475,3 @@
             padding-top: 70px;
         }
     </style>
-
-    <header class="fixed-menu">
-        <div class="logo">
-            <img src="diagonodose-logo.png" alt="Diagnodose Logo">
-            <h1>Diagnodose</h1>
-        </div>
-        <nav class="nav-menu">
-            <a href="symptoms.html" class="nav-item">Check Your Symptoms</a>
-            <a href="find-doctor.html" class="nav-item">Find a Doctor</a>
-            <a href="faqs.html" class="nav-item">Help & FAQs</a>
-            <select class="language-selector">
-                <option value="en">English</option>
-                <option value="hi">हिंदी</option>
-                <option value="te">తెలుగు</option>
-                <option value="ta">தமிழ்</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-            <a href="health-records.html" class="profile-btn">My Health Records</a>
-        </nav>
-    </header>
